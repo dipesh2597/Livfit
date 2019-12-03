@@ -1,0 +1,84 @@
+{% extends "home/base.html" %}
+{%load staticfiles%}
+{% block stylesheet %}
+<link rel="stylesheet" href="{%static 'register.css'%}">
+{% endblock %}
+{% block content %}
+    <div class="register">
+        <form method="POST">
+            {%csrf_token%}
+            <fieldset>
+                <legend class="title"><h1 style="font-family:Brush Script MT,Brush Script Std,cursive; text-align:center;">LivFit</h1>Join Us to live Fit</legend>
+                {% if form.username.errors %}
+                    <p class="label label-danger">
+                    Username already taken! Please try with different username.
+                    </p>
+                {% endif %}
+                {% if form.password2.errors %}
+                    <p class="label label-danger">
+                    Password do not match! Read password guidelines.
+                    </p>
+                {% endif %}
+                <div class="row">
+                <div id="first_name" class="col-md-6">
+                    <label for="first_name" class="requiredField">First name<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="text" name="first_name" maxlength="32">
+                    </div>
+                </div>
+                <div id="last_name" class="group col-md-6">
+                    <label for="last_name" class="requiredField">Last name<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="text" name="last_name" maxlength="32" id="last_name">
+                    </div>
+                </div>
+                </div>
+                <div id="email" class="group">
+                    <label for="email" class="requiredField">Email<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="email" name="email" id="email">
+                    </div>
+                </div>
+                <div id="username" class="group">
+                    <label for="username" class="requiredField">Username<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="text" name="username" maxlength="50" id="username">
+                    </div>
+                </div>
+                <div id="password1" class="group">
+                    <label for="password1" class="requiredField">Password<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="password" name="password1" id="password1">
+                        <small id="hint_password1" class="">
+                            <ul>
+                                <li>Your password can't be too similar to your name or username.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>Your password can't be a commonly used password.</li>
+                                <li>Your password can't be entirely numeric.</li>
+                            </ul>
+                        </small>
+
+                    </div>
+                </div>
+                <div id="password2" class="group">
+                    <label for="password2" class="requiredField">Password confirmation<span class="asteriskField">*</span> </label>
+                    <div class="">
+                        <input type="password" name="password2" class="" required="" id="password2">
+                        <small id="hint_password2" class="">Enter the same password enter before, for verification.</small>
+
+                    </div>
+                </div>
+
+
+
+            </fieldset>
+
+            <div class="group">
+                <button class="btn btn-outline-info" type="submit">Register</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Already Have An Account? Click here to<a class="ml-2" href="{% url 'login'%}">LogIn</a></small>
+        </div>
+    </div>
+{% endblock content %}

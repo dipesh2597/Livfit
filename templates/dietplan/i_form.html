@@ -1,0 +1,34 @@
+{% extends "home/base.html" %}
+{% load staticfiles %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{%static 'getdietplan.css'%}">
+{% endblock %}
+{% block content %}
+<div style="background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.5)), url('/static/images/dv.jpeg'); background-size: cover;">
+
+<div class="calorie-calculator">
+    <form method="POST">
+        {%csrf_token%}
+        <legend class="title">Ingredient  </legend>
+        {%if messages%}
+            {% for message in messages %} <!--take care of identation always--->
+                <div class="alert alert-{{ message.tags }}"> <!--here we used {{ message.tags }} for different type of messae from django library e.g. danger alert success info etc-->{{ message }} <!-- this will print out the mesage whatever will be printed by function in views.py --->
+                </div>
+            {% endfor %}
+        {% endif %}
+                {{ i_form.as_p }}
+
+
+        <div class="group">
+                <button class="btn btn-outline-info" type="submit">Save</button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+</div>
+{% endblock %}

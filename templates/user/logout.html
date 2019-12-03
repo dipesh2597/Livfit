@@ -1,0 +1,12 @@
+
+{% block content %}
+    <h2>You have been logged Out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="ml-2" href="{% url 'login'%}">Log in again</a>
+            <a class="ml-2" href="{% url 'home-index'%}">Home</a>
+
+        </small>
+    </div>
+
+{% endblock content %}

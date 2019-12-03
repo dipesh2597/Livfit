@@ -1,0 +1,44 @@
+{% extends "home/base.html" %}
+{%load staticfiles%}
+{% block stylesheet %}
+<link rel="stylesheet" href="{%static 'vegdietplan.css'%}">
+{% endblock %}
+{% block content %}
+<div class="dietplan-view">
+    <form method="POST">
+        {%csrf_token%}
+        <legend class="title">Dietplan</legend>
+             <!--take care of identation always--->
+         <table class ="tables">
+                <tr class="rowHead"><th>Timing</th>
+                    <th>Meals</th>
+                </tr>
+                {% for message in messages %}
+                    {%if "b" in message.tags%}
+                        <tr class="rows" id="row1"><td class="first">meal 1</td><td>{{message}}</td></tr>
+                    {%endif%}
+                {% endfor %}
+                {% for message in messages %}
+                    {%if "s1" in message.tags%}
+                        <tr class="rows" id="row2 "><td class="first">meal 2</td><td>{{message}}</td></tr>
+                    {%endif%}
+                {% endfor %}
+                {% for message in messages %}
+                    {%if "l" in message.tags%}
+                        <tr class="rows" id="row3"><td class="first">meal 3</td><td>{{message}}</td></tr>
+                    {%endif%}
+                {% endfor %}
+                {% for message in messages %}
+                    {%if "s2" in message.tags%}
+                        <tr class="rows" id="row4"><td class="first">meal 4</td><td>{{message}}</td></tr>\
+                    {%endif%}
+                {% endfor %}
+                {% for message in messages %}
+                    {%if "d" in message.tags%}
+                        <tr class="rows" id="row5"><td class="first">meal 5</td><td>{{message}}</td></tr>
+                    {%endif%}
+                {% endfor %}
+         </table>
+    </form>
+</div>
+{% endblock %}

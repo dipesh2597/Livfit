@@ -1,0 +1,43 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.5)),url('/static/images/dv.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.dietplan-view
+{
+  background-size: 100% 100%;
+	color:#f1f1f1;
+	font-family:arial;
+	font-size:2em;
+	background-repeat:no-repeat;
+	height:96vh;width:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	padding-bottom: 10vh;
+}
+.tables
+{
+	border:10px solid #F1F1F1;
+	padding:40px;
+}
+td
+{
+	border:0.1px solid hsl(210,67%,56%);
+	padding:5px;
+}
+td
+{
+    padding-left:50px;
+    margin:10px;
+	padding-top:10px;padding-bottom:10px;
+	border-radius:20px;
+    transition:box-shadow linear 0.3s;}
+	td:hover{cursor:pointer;box-shadow:1px 1px 20px rgba(0,0,0,0.7);}
+
+.first
+{
+	padding-right:40px;
+	text-transform:capitalize;
+	border-radius:20px;
+}

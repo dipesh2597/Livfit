@@ -1,0 +1,34 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.5)),url('/static/images/reg-bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.register {
+    overflow: visible;
+    color: #fff;
+    background-attachment: absolute;
+    background-color: rgba(0,0,0,0.5);
+    background-position: center;
+    width: 30%;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    margin: 3vh 35vw;
+    padding: 5px;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 1);
+    border: 5px;
+    border-color: #000;
+    padding-bottom: 10vh;
+}
+
+input {
+    border-radius: 25px;
+    border-color: #000;
+    width: 100%;
+    font-family: san-serif;
+    outline: none;
+    padding-left: 5px;
+}
+label {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

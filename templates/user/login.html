@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LivFit</title>
+<meta name="viewport" contect="widht=device-width; initial-scale=1.0;">
+<link rel="stylesheet" href="{%static 'login.css'%}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{%static 'home.js'%}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+{% block content %}
+    <div class="login">
+        <form method="POST">
+            {%csrf_token%}
+            <fieldset>
+                <legend class="title">Log In</legend>
+                <div id="username" class="group">
+                    <label for="username" class="requiredField">Username<span class="asteriskField">*</span> </label>
+                        <div class="">
+                            <input type="text" name="username" autofocus=" id="id_username">
+                        </div>
+                </div>
+                <div id="div_id_password" class="group">
+                    <label for="id_password" class="requiredField">Password<span class="asteriskField">*</span> </label>
+                        <div class="">
+                            <input type="password" name="password" id="id_password">
+                        </div>
+                </div>
+            </fieldset>
+            {% if form.errors %}
+                <p class="label label-danger">
+                    Your username and password didn't match.
+                    Please Try again.
+                </p>
+            {% endif %}
+            <div class="form-group">
+
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Need An Account? <a class="ml-2" href="{% url 'register'%}">Create an account now</a></small>
+        </div>
+    </div>
+{% endblock content %}
+</body>
+</html>

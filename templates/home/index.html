@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LivFit</title>
+<meta name="viewport" contect="widht=device-width; initial-scale=1.0;">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="{%static 'home.css'%}">
+<link rel="stylesheet" href="{%static 'bootstrap.min.css'%}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{%static 'home.js'%}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!--Navigation-->
+<section id="nav-bar">
+    <nav class="navbar navbar-fixed-top navbar-light header">
+        <div class="row">
+            <div class="col-md-3 logo">
+                 <a class="navbar-brand" href="{% url 'home-index' %}" style="font-family:Brush Script MT,Brush Script Std,cursive;text-align:center; font-size: 45px;">LivFIt
+                <!--we can put a logo as a image instead of Navbar-->
+                </a>
+            </div>
+        </div>
+
+  <button class="nav-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  {% if user.is_authenticated %}
+        <p><a class="text-center btn btn-small btn-info" href="{% url 'logout'%}">LOGOUT</a></p>
+  {% endif %}
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto sidenav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home-index'%}">Home</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="{% url 'caloriescalculator' %}">Diet Plans</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">Receipies</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Meet FitGuru</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">Contact us</a>
+    </li>
+
+    </ul>
+
+  </div>
+</nav>
+</section>
+
+<!---- start----->
+{%if messages%}
+    {% for message in messages %} <!--take care of identation always--->
+        <div class="alert alert-{{ message.tags }}"> <!--here we used {{ message.tags }} for different type of messae from django library e.g. danger alert success info etc-->
+    {{ message }} <!-- this will print out the mesage whatever will be printed by function in views.py --->
+        </div>
+    {% endfor %}
+{% endif %}
+
+<section id="start">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="col-md-10 text-center">Start your fitness journey today!</h1>
+            <p class="col-md-10 text-center">Achieve your fitness resolutions with world class Personalized coaching!</p>
+        </div>
+        {% if not user.is_authenticated %}
+        <div class="col-md-6">
+            <p><a class="col-md-4text-center btn btn-small btn-info" href="{% url 'login'%}">LOGIN</a></p>
+            <h3>OR</h3> <!---href = " {% url 'register' %}" it will redirect to path which have name="register"-->
+            <p><a class="col-md-4 text-center btn btn-small btn-info" href="{% url 'register'%}">REGISTER</a></p>
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            <p class="dietplan"><a class="col-md-4 text-center btn btn-small btn-info" href="{% url 'caloriescalculator'%}">Get Dietplan</a></p>
+        {% endif %}
+        </div>
+    </div>
+</section>
+<!-----work----->
+<section class="hme-work-section" id="work">
+    <div class="swiper-container work-section-container swiper-container-horizontal">
+
+        <div class="swiper-wrapper row" " style="transform: translated3d(-225px,0px,0px); transition-duration:0ms">
+            <!---slides--->
+
+            <div id="step1" class="swiper-slide swiper-slide-active" style="width: 100%;">
+                <div class="hme-work-section--slide-content">
+                    <div class="hme-work-section--slide-text-content">
+                        <h3 class="hme-work-section--title">Here's how we work</h3>
+                        <h2 class="hme-work-section--slide-text-content--title">Step 1 - Set Your Fitness Goal</h2>
+                        <img class="hme-work-section--slide-text-content--image cursor-pointer" alt="fitness goal" title="Set Your Fitness Goal" src="/static/images/goal.jpg">
+                        <h4 class="hme-work-section--slide-text-content--description">It all starts with a goal. Whether you want to lose weight, tone up, build muscle, or start eating healthy, HealthifyMe will set a daily budget for you based on your goal, weight, age, lifestyle, and other parameters.</h4>
+                    </div>
+                </div>
+             </div>
+
+            <div id="step2" class="swiper-slide swiper-slide-active" style="width: 100%;">
+                <div class="hme-work-section--slide-content">
+                    <div class="hme-work-section--slide-text-content">
+                        <h2 class="hme-work-section--slide-text-content--title">Step 2 - Coaches guide you</h2>
+                        <img class="hme-work-section--slide-text-content--image cursor-pointer" alt="healthifyme coaches" title="Coaches guide you" src="/static/images/coach.jpg">
+                        <h4 class="hme-work-section--slide-text-content--description">We understand there’s no one-size-fits-all. Our nutritionists and trainers help you craft a diet and workout plan that’s based on your needs and works with the realities of your lifestyle.</h4>
+                    </div>
+                 </div>
+            </div>
+
+            <div id="step3" class="swiper-slide swiper-slide-active" style="width: 100%;">
+                <div class="hme-work-section--slide-content">
+                    <div class="hme-work-section--slide-text-content">
+                        <h2 class="hme-work-section--slide-text-content--title">Step 3 - Discover the new you</h2>
+                        <img class="hme-work-section--slide-text-content--image cursor-pointer" alt="results" title="Discover the new you" src="/static/images/discover.jpg"><h4 class="hme-work-section--slide-text-content--description">Using experts and technology, today almost 1.2 Million people have benefited from HealthifyMe and met their goals - be it weight loss, eating healthy or staying fit.</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-------chatbot----->
+<section class="fitguru">
+  <h3 class="fitguru--title">Meet FitGuru</h3>
+  <h5 class="fitguru--subtitle">Powered by 150 Million food logs, 15 million messages and over a Millennium of experience, Ria is the world's first AI
+    coach!
+  </h5>
+  <p class="fitguru-feature">
+    <span class="fitguru-title">24x7 Coach</span>
+    <br>
+    <span class="fitguru-subtitle">The world's first coach that's reachable at all times, in your pocket!</span>
+  </p>
+  <p class="fitguru-feature">
+    <span class="fitguru-title">Instant Replies</span>
+    <br>
+    <span class="fitguru-subtitle">No more waiting for an answer. Simply ask any question, and get an instant answer</span>
+  </p>
+  <p class="fitguru-feature">
+    <span class="fitguru-title">Stay Motivated</span>
+    <br>
+    <span class="fitguru-subtitle">Got the Health Blues? Ria will ensure you get up and get going... Everytime!</span>
+  </p>
+  <p class="fitguru-feature">
+    <span class="fitguru-title" style="font-size; 24px;">Ultra Smart</span>
+    <br>
+    <span class="fitguru-subtitle">The first AI coach who's the best Nutritionist and the best Fitness Trainer at once!</span>
+  </p>
+    <button class="fitguru-button">KNOW MORE</button>
+</section>
+<!---------career----->
+<section class="career">
+  <div class="career-content">
+    <div class="career-content-text">
+      <h2 class="career-content-text-title">Work with CodeLover</h2>
+      <p class="career-content-text-description">Interested in working with us? Check out my website and see if you’ve got what it takes to become a part of a fun loving, hard working team!</p>
+    </div>
+    <div class="career-content-button-container">
+      <a href="codelover.gq" ><button class="button--white">Visit Website</button></a>
+    </div>
+  </div>
+</section>
+<!---footer---->
+<section class="footer">
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li class="footer-li-title">Contact Us</li>
+                <li class="footer-li-bold">Email</li>
+                <a href="mailto:support@livfit.com">support@livfit.com</a>
+                <li class="footer-li-bold">Mobile</li>
+                <a href="tel:+919977811806">9977811806</a>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li class="footer-li-title">Follow Us</li>
+                <li class="footer-li-links">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+		            <a href="#"><i class="fa fa-twitter"></i></a>
+		            <a href="#"><i class="fa fa-linkedin"></i></a>
+		            <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</section>
+
+<section id="footer">
+    <div class="container text-center">
+    <p>Made With <i class="fa fa-heart-o"></i> By CodeLover Copyrights &copy 2019</p>
+    </div>
+</section>
+
+</body>
+</html>

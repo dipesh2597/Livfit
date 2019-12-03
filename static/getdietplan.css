@@ -1,0 +1,32 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.5)),url('/static/images/dv.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.calorie-calculator {
+    color: #fff;
+    overflow: visible;
+    background-attachment: absolute;
+    background-color: rgba(0,0,0,0.5);
+    background-position: center;
+    width: 38vw;
+    margin: 3vh 31vw;
+    margin-right: 40vw;
+    padding: 5px;
+    box-shadow: 0 0 60px 0;
+    box-shadow: 0 0 60px 0;
+    border: 5px;
+    border-color: #000;
+}
+
+input {
+
+    border-radius: 25px;
+    border-color: #000
+    border-color: #000
+    padding-left: 5px;
+}
+label {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

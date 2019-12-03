@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LivFit</title>
+<meta name="viewport" contect="widht=device-width; initial-scale=1.0;">
+{% block stylesheet %}
+{% endblock %}
+<link rel="stylesheet" href="{%static 'home.css'%}">
+<link rel="stylesheet" href="{%static 'bootstrap.min.css'%}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="{%static 'home.js'%}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="{%static 'bootstrap-4.3.1/js/bootstrap.min.js'%}https://stackpath.bootstrapcdn.com/"></script>
+
+</head>
+<body>
+<!--Navigation-->
+<section id="nav-bar">
+    <nav class="navbar navbar-fixed-top navbar-light header">
+        <div class="row">
+            <div class="col-md-3 logo">
+                <a class="navbar-brand" href="{% url 'home-index' %}" style="font-family:Brush Script MT,Brush Script Std,cursive;text-align:center; font-size: 45px;">LivFIt
+                <!--we can put a logo as a image instead of Navbar-->
+                </a>
+            </div>
+        </div>
+
+  <button class="nav-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  {% if user.is_authenticated %}
+        <p><a class="text-center btn btn-small btn-info" href="{% url 'logout'%}">LOGOUT</a></p>
+  {% endif %}
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto sidenav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home-index'%}">Home</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="{% url 'caloriescalculator' %}">Diet Plans</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">Receipies</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Meet FitGuru</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="#">Contact us</a>
+    </li>
+
+    </ul>
+
+    </div>
+</nav>
+</section>
+
+{%  block content %}
+{% endblock %}
+
+<!---career--->
+<section class="career">
+  <div class="career-content">
+    <div class="career-content-text">
+      <h2 class="career-content-text-title">Work with CodeLover</h2>
+      <p class="career-content-text-description">Interested in working with us? Check out my website and see if you’ve got what it takes to become a part of a fun loving, hard working team!</p>
+    </div>
+    <div class="career-content-button-container">
+      <a href="https://www.codelover.gq" ><button class="button--white">Visit Website</button></a>
+    </div>
+  </div>
+</section>
+<!---footer---->
+<section class="footer">
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li class="footer-li-title">Contact Us</li>
+                <li class="footer-li-bold">Email</li>
+                <a href="mailto:support@livfit.com">support@livfit.com</a>
+                <li class="footer-li-bold">Mobile</li>
+                <a href="tel:+919977811806">9977811806</a>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li class="footer-li-title">Follow Us</li>
+                <li class="footer-li-links">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+		            <a href="#"><i class="fa fa-twitter"></i></a>
+		            <a href="#"><i class="fa fa-linkedin"></i></a>
+		            <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</section>
+
+<section id="footer">
+    <div class="container text-center">
+    <p>Made With <i class="fa fa-heart-o"></i> By CodeLover Copyrights &copy 2019</p>
+    </div>
+</section>
+
+</body>
+</html>
